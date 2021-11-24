@@ -23,41 +23,9 @@ export default {
     async fetchItems ({ commit }) {
       commit('clearError')
       commit('setLoading', true)
-      // const items = [
-      //   {
-      //     "id": 1,
-      //     "name": "Leanne Graham",
-      //     "username": "Bret",
-      //     "email": "Sincere@april.biz",
-      //     items: [
-      //       {
-      //         "id": 1,
-      //         "name": "1student",
-      //       },
-      //       {
-      //         "id": 2,
-      //         "name": "2student",
-      //       },
-      //     ]
-      //   },
-      //   // {
-      //   //   "id": 2,
-      //   //   "name": "Ervin Howell",
-      //   //   "username": "Antonette",
-      //   //   "email": "Shanna@melissa.tv",
-      //   //   items: [
-      //   //     {
-      //   //       "id": 1,
-      //   //       "name": "3student",
-      //   //     },
-      //   //     {
-      //   //       "id": 2,
-      //   //       "name": "4student",
-      //   //     },
-      //   //   ]
-      //   // },
-      // ]
 
+      // for testing
+      /*
       const items = [
         {
           id: 1,
@@ -106,16 +74,15 @@ export default {
           }
         }
       ]
+      */
 
-      console.log(items)
+      const response = await fetch('https://jsonplaceholder.typicode.com/users')
+      const responseData = await response.json()
 
-      // let response = await fetch('https://jsonplaceholder.typicode.com/users');
-      // let responseData = await response.json();
-      //
-      // console.log(responseData)
+      console.log(responseData)
 
       try {
-        commit('fetchItems', items)
+        commit('fetchItems', responseData)
         commit('setLoading', false)
       } catch (error) {
         commit('setError', error.message)
